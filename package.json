@@ -1,7 +1,7 @@
 {
   "name": "@andersbakken/fisk-native",
   "version": "4.0.0",
-  "main": "index.js",
+  "main": "index.cjs",
   "types": "index.d.ts",
   "type": "commonjs",
   "license": "GPL",
