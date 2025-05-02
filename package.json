@@ -1,0 +1,20 @@
+{
+  "name": "@andersbakken/fisk-native",
+  "version": "1.0.0",
+  "main": "index.mjs",
+  "types": "index.d.ts",
+  "type": "module",
+  "files": [
+    "fisk-native.node",
+    "index.d.ts",
+    "index.mjs",
+    "package.json",
+    "package-lock.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "devDependencies": {
+    "node-addon-api": "^8.3.1",
+    "node-api-headers": "^1.5.0"
+  }
+}
