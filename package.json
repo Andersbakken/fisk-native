@@ -8,6 +8,7 @@
     "install": "node-gyp rebuild"
   },
   "files": [
+    "fisk-native.cpp",
     "binding.gyp",
     "index.d.ts",
     "index.js",
