@@ -1,14 +1,14 @@
 {
   "name": "@andersbakken/fisk-native",
   "version": "1.0.0",
-  "main": "index.mjs",
+  "main": "index.js",
   "types": "index.d.ts",
   "type": "module",
   "license": "GPL",
   "files": [
     "fisk-native.node",
     "index.d.ts",
-    "index.mjs",
+    "index.js",
     "package.json",
     "package-lock.json",
     "LICENSE",
