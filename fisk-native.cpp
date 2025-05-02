@@ -191,3 +191,5 @@ Napi::Object Init(Napi::Env env, Napi::Object exports)
     exports.Set("setrlimit", Napi::Function::New(env, setrlimit_func));
     return exports;
 }
+
+NODE_API_MODULE(fisk-native, Init);
