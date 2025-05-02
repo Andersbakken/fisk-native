@@ -1,5 +1,5 @@
-const native = require("./fisk-native.node");
+const path = require('path');
+const bindings = require('bindings');
 
-module.exports.getpwnam = native.getpwnam;
-module.exports.setrlimit = native.setrlimit;
-module.exports.chroot = native.chroot;
+const nativeModule = bindings('your_module_name');
+module.exports = nativeModule;
