@@ -1,27 +1,30 @@
 {
-  "name": "@andersbakken/fisk-native",
-  "version": "13.0.0",
-  "main": "index.js",
-  "types": "index.d.ts",
-  "license": "GPL",
-  "scripts": {
-    "install": "node-gyp rebuild"
-  },
-  "files": [
-    "fisk-native.cpp",
-    "binding.gyp",
-    "index.d.ts",
-    "index.js",
-    "package.json",
-    "package-lock.json",
-    "LICENSE",
-    "README.md"
-  ],
-  "dependencies": {
-    "bindings": "^1.5.0",
-    "napi-build-utils": "^2.0.0",
-    "node-addon-api": "^8.3.1",
-    "node-api-headers": "^1.5.0",
-    "node-gyp": "^11.2.0"
-  }
+    "name": "@andersbakken/fisk-native",
+    "version": "13.0.0",
+    "main": "index.js",
+    "types": "index.d.ts",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Andersbakken/fisk-native.git"
+    },
+    "scripts": {
+        "install": "node ./build.js"
+    },
+    "files": [
+        "fisk-native.cpp",
+        "binding.gyp",
+        "index.d.ts",
+        "index.js",
+        "package.json",
+        "package-lock.json",
+        "LICENSE",
+        "README.md"
+    ],
+    "dependencies": {
+        "bindings": "^1.5.0",
+        "napi-build-utils": "^2.0.0",
+        "node-addon-api": "^8.3.1",
+        "node-api-headers": "^1.5.0"
+    }
 }
