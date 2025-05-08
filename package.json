@@ -13,8 +13,8 @@
     },
     "files": [
         "fisk-native.cpp",
-        "binding.gyp",
         "index.d.ts",
+        "build.js",
         "index.js",
         "package.json",
         "package-lock.json",
