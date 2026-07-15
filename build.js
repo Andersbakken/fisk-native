@@ -32,7 +32,7 @@ child_process.execFile(
         "-O3",
         "-Wall",
         "-Wextra",
-        "-std=c++20"
+        "-std=c++20",
         "-fPIC",
         "-o",
         path.join(__dirname, "build", "fisk-native.o")
