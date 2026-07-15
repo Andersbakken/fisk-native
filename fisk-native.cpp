@@ -1,4 +1,6 @@
 #include <errno.h>
+#include <limits.h>
+#include <stdlib.h>
 
 #include <napi.h>
 #include <pwd.h>
@@ -61,15 +63,23 @@ Napi::Value chroot_func(const Napi::CallbackInfo &info)
         return env.Undefined();
     }
 
-    std::string dir = info[0].As<Napi::String>().Utf8Value();
-    if (chdir(dir.c_str())) {
+    const std::string dir = info[0].As<Napi::String>().Utf8Value();
+    char abs[PATH_MAX];
+    if (!realpath(dir.c_str(), abs)) {
+        char errbuf[256];
+        snprintf(errbuf, sizeof(errbuf), "chroot: realpath: %s (%d)", strerror(errno), errno);
+        Napi::Error::New(env, errbuf).ThrowAsJavaScriptException();
+        return env.Undefined();
+    }
+
+    if (chdir(abs)) {
         char errbuf[256];
         snprintf(errbuf, sizeof(errbuf), "chroot: chdir: %s (%d)", strerror(errno), errno);
         Napi::Error::New(env, errbuf).ThrowAsJavaScriptException();
         return env.Undefined();
     }
 
-    if (chroot(dir.c_str())) {
+    if (chroot(abs)) {
         char errbuf[256];
         snprintf(errbuf, sizeof(errbuf), "chroot: chroot: %s (%d)", strerror(errno), errno);
         Napi::Error::New(env, errbuf).ThrowAsJavaScriptException();
