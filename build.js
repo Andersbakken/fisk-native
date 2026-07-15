@@ -50,20 +50,34 @@ child_process.execFile(
             console.error("Compiler error Output:", stderr);
         }
 
+        const linkArgs =
+            os.platform() === "darwin"
+                ? [
+                      "-shared",
+                      "-pthread",
+                      "-m64",
+                      "-undefined",
+                      "dynamic_lookup",
+                      path.join(__dirname, "build", "fisk-native.o"),
+                      "-o",
+                      path.join(__dirname, "build", "fisk-native.node")
+                  ]
+                : [
+                      "-shared",
+                      "-pthread",
+                      "-rdynamic",
+                      "-m64",
+                      `-Wl,-soname=fisk-native.node`,
+                      `-Wl,--start-group`,
+                      path.join(__dirname, "build", "fisk-native.o"),
+                      `-Wl,--end-group`,
+                      "-o",
+                      path.join(__dirname, "build", "fisk-native.node")
+                  ];
+
         child_process.execFile(
             compiler,
-            [
-                "-shared",
-                "-pthread",
-                "-rdynamic",
-                "-m64",
-                `-Wl,-soname=fisk-native.node`,
-                `-Wl,--start-group`,
-                path.join(__dirname, "build", "fisk-native.o"),
-                `-Wl,--end-group`,
-                "-o",
-                path.join(__dirname, "build", "fisk-native.node")
-            ],
+            linkArgs,
             (err, stdout, stderr) => {
                 if (err) {
                     console.error("Error:", err);
