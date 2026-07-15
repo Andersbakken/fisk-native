@@ -1,6 +1,6 @@
 {
     "name": "@andersbakken/fisk-native",
-    "version": "21.0.0",
+    "version": "22.0.0",
     "main": "index.js",
     "types": "index.d.ts",
     "license": "ISC",
